@@ -6,7 +6,7 @@
   <title>Dashboard con CSS Grid + flexbox</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="sidebar--open">
   <header class="header">
     <img class="header__menu" src="icon-menu.svg">
     <h1>Dashboard</h1>
@@ -30,5 +30,22 @@
     <div class="card">CARD 5</div>
     <div class="card">CARD 6</div>
   </main>
+
+  <script>
+    /* Al hacer click en el icon buttonMenu debe abrirse el menu a 300px */
+    const buttonMenu = document.querySelector('.header__menu')
+    const sidebarMenu = document.querySelector('.sidebar')
+
+    buttonMenu.addEventListener('click', () => {
+      sidebarMenu.classList.toggle('sidebar--open')
+    })
+
+    const buttonSettings = document.querySelector('.header__settings')
+    const settingsMenu = document.querySelector('.settings')
+
+    buttonSettings.addEventListener('click', () => {
+      settingsMenu.classList.toggle('settings--open')
+    })
+  </script>
 </body>
 </html>
