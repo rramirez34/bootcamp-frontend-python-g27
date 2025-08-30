@@ -175,10 +175,240 @@ console.log(cadena1.length === cadena2.length) // true
 // TODO: Resolver para mañana
 
 // 2. Retornar true si un numero es menor que 40 sino devolver false
+const unNumero = 28
+console.log('EJERCICIO 2:', unNumero < 40)
+
 // 3. Retornar True si un numero es menor que 60 sino devolver False
+console.log('EJERCICIO 3:', 88 < 60)
+
 // 4. Retornar True si un numero es par sino devolver False
+console.log('EJERCICIO 4:', 8 % 2 === 0) // true
+
 // 5. Retornar True si un numero es impar sino devolver 
+console.log('EJERCICIO 5:', 7 % 2 !== 0) // true
+
 // 6. calcular el area de un triangulo y mostrar su resultado si tenemos los valores base y altura
+const base = 10
+const altura = 15
+const area = (base * altura) / 2
+console.log('EJERCICIO 6:', area)
+
 // 7. (TODO) Almacenar en una constante un número de 3 cifras y mostrar la suma de sus cifras elevada al cubo.
 // 8. (TODO) Almacenar en una constante un monto de dinero, luego mostrar cuanto le toca a cada socio según la siguiente tabla:
 // SOCIO A = 30%, SOCIO B = 20%, SOCIO C = 60%
+
+// CONDICIONALES (IF)
+
+if(true) {
+  // Se ejecuta este bloque si la condición es verdadera
+}
+
+const numero = 35
+
+const esPar = numero % 2 === 0
+
+if (esPar) {
+  console.log('CONDICIONALES (IF)', 'Este número es par')
+}
+
+// CONDICIALES (IF, ELSE)
+
+if(true) {
+  // Se ejecuta este bloque si la condición es verdadera
+} else {
+  // Se ejecuta este bloque si la condición es falsa
+}
+
+if (esPar) {
+  console.log('CONDICIONALES (IF, ELSE)', 'Este número es par')
+} else {
+    console.log('CONDICIONALES (IF, ELSE)', 'Este número es impar')
+}
+
+// CONDICIONALES (IF, ELSE IF, ELSE)
+
+if (true) {
+  // Se ejecuta este bloque si la condición es verdadera
+} else if (true) {
+  // Se ejecuta este bloque si la condición es verdadera
+} else if (true) {
+  // Se ejecuta este bloque si la condición es verdadera
+} else {
+  // Se ejecuta este bloque si ninguna condición se cumple
+}
+
+let hero = 'Spiderman'
+
+if (hero === 'Batman') {
+  console.log('Hola soy Bruce')
+} else if (hero === 'Spiderman') {
+  console.log('Hola soy Peter')
+} else if (hero === 'Ironman') {
+  console.log('Hola soy Tony')
+} else { // Opcional
+  console.log('No eres un heroe aun :(')
+}
+
+// CONDICIONALES (SWITCH)
+
+hero = 'Batman'
+
+switch (hero) {
+  case 'Batman':
+    console.log('Hola soy Bruce')
+  break // Opcional
+  case 'Spiderman':
+    console.log('Hola soy Peter')
+  break
+  case 'Ironman':
+    console.log('Hola soy Tony')
+  break
+  default: // Opcional
+    console.log('No eres un heroe aun :(')
+}
+
+// ESTRUCTURAS REPETITIVAS
+
+// FOR (Sirve para repetir una o varias instrucciones)
+
+// for(INICIALIZADOR, CONDICIÓN, CONTADOR)
+for(let i = 0; i < 10; i = i + 1) {
+  console.log('FOR', i)
+}
+
+// i = i + 1 ES EQUIVALENTE A i++
+
+for(let i = 0; i < 10; i++) {
+  console.log('FOR', i)
+}
+
+// WHILE
+
+let j = 0 // CONTADOR
+
+while (j < 10) {
+  console.log('WHILE', j)
+
+  j++ // ⚠ Cuidado con crear un bucle infinito
+}
+
+// DO WHILE
+
+let k = 0
+
+do {
+  console.log('DO-WHILE', k)
+
+  k++
+} while(k < 10)
+
+// EJERCICIOS
+
+// 1. Determinar si la edad de una persona es mayor de edad o menor de edad mostrando 'Mayor de edad' o 'Menor de edad'
+
+const edadPersona = 39
+
+if (edadPersona >= 18) {
+  console.log('EJERCICIO 1', 'Mayor de edad')
+} else {
+  console.log('EJERCICIO 1', 'Menor de edad')
+}
+
+// 2. Retornar un saludo en tres diferentes lenguajes:
+//    - si es español mostrará 'Hola'
+//    - si es inglés mostrará 'Hello'
+//    - si es aimara mostrará 'kamisaraki'
+// 3. Si un numero es divisible entre 3 y 5 devolver 'fizzbuzz'
+//    Si un numero es divisible entre 3 devolver 'fizz'
+//    Si un numero es divisible entre 5 devolver 'buzz'
+//    De lo contrario devolver el mismo número
+// 4. Retornar true si un numero es primo sino devolver false
+//    Pista: un numero primo es divisible por sí mismo y por 1
+// 5. Devolver un valor que se incremente de dos en dos y devuelva los menores a 10
+
+// FUNCIONES (Son bloques de código que podemos reutilizar)
+
+// Declaración
+function nombreDeLaFuncion() {
+  // Cuerpo de la función y aquí va la lógica a ejecutar y la que vamos a reutilizar
+}
+
+// Ejecutar, aquitar estamos llamando a la función
+nombreDeLaFuncion()
+nombreDeLaFuncion()
+
+// Funciones sin parámetros
+
+function imprimirMiNombre() {
+  console.log('Hola soy Victor')
+  console.log('Y soy fullstack')
+}
+
+imprimirMiNombre()
+imprimirMiNombre()
+
+// Funciones con parámetros y valores por defecto
+
+function imprimirUnNombre(nombre="Anónimo", apellido='') {
+  // if (nombre === undefined) {
+  //   nombre = 'Anónimo'
+  // }
+
+  console.log('Hola soy', nombre, apellido)
+}
+
+imprimirUnNombre() // Hola soy undefined
+imprimirUnNombre("Oscar", 'Carhuachin') // Hola soy Oscar Carhuachin
+
+// EJERCICIOS
+
+// 1. Usando funciones determinar si la edad de una persona es mayor de edad o menor de edad mostrando 'Mayor de edad' o 'Menor de edad.
+
+function esMayorOMenorDeEdad(edad) {
+  if (edad >= 18) {
+    console.log('Mayor de edad')
+  } else {
+    console.log('Menor de edad')
+  }
+}
+
+esMayorOMenorDeEdad(39)
+esMayorOMenorDeEdad(8)
+esMayorOMenorDeEdad(17)
+
+// 2. Retornar true si un numero es primo sino devolver false
+// Pista: un numero primo es divisible por sí mismo y por 1
+
+
+// FUNCIONES SIN RETORNO
+
+function esMayorOMenorDeEdad(edad) {
+  if (edad >= 18) {
+    console.log('Mayor de edad')
+  } else {
+    console.log('Menor de edad')
+  }
+
+  // FUNCION QUE NO RETORNO NADA === undefined
+}
+
+console.log(esMayorOMenorDeEdad(39)) // undefined
+
+// FUNCIONES CON RETORNO
+
+function esMayorOMenorDeEdadConRetorno(edad) {
+  if (edad >= 18) {
+    return 'Mayor de edad'
+  } else {
+    return 'Menor de edad'
+  }
+
+  // FUNCION QUE NO RETORNO NADA === undefined
+}
+
+const resultado = esMayorOMenorDeEdadConRetorno(15)
+
+console.log(resultado)
+
+console.log(esMayorOMenorDeEdadConRetorno(25)) // Mayor de edad
+console.log(esMayorOMenorDeEdadConRetorno(12)) // Menor de edad
