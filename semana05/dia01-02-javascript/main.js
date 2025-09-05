@@ -799,7 +799,11 @@ const nombresFrutas = frutas.map(function(fruta) {
 console.log('¿tenemos "kiwi"?', nombresFrutas.includes('kiwi'))
 
 // 2. map → obtener solo los precios
+const soloprecios = frutas.map(function(precios) {
+  return precios.precio
+})
 
+//console.log('Solo se muestran precios',)
 // 3. filter → frutas con stock disponible
 
 // 4. reduce → calcular el valor total del inventario
