@@ -696,3 +696,119 @@ languages.forEach(
 
 console.log(miArreglo)
 
+// OBJETOS
+
+/*
+  {
+    KEY: VALUE,
+    KEY2: VALUE2,
+    KEY3: VALUE3
+  }
+*/
+
+const miObjetoVacio = {}
+
+const miObjeto = {
+  nombre: 'Victor',
+  apellido: 'Villazón',
+  colorFavorito: 'azúl',
+  edad: 37,
+  esMayorDeEdad: true,
+  coloresFavoritos: ['rosado', 'rojo', 'azúl'],
+  'mi edad': 39,
+  cursos: [
+    {
+      nombre: 'Matemática',
+      nota: 18
+    },
+    {
+      nombre: 'Algoritmos',
+      nota: 13
+    }
+  ],
+  devolverCursosAprobados: function() {
+    return this.cursos.filter(function(curso) {
+      return curso.nota > 13
+    })
+  }
+}
+
+console.log(miObjetoVacio)
+console.log(miObjeto)
+
+// LEER LOS CAMPOS DE UN OBJETO (notación de punto y de corchete)
+
+console.log(miObjeto.nombre) // Victor
+console.log(miObjeto.apellido) // Villazón
+console.log(miObjeto.edad) // 37
+
+// console.log(miObjeto.mi edad) // BAD ❌ - Uncaught SyntaxError: missing ) after argument list
+console.log(miObjeto['mi edad']) // OK ✅
+
+console.log(miObjeto.coloresFavoritos) // ['rosado', 'rojo', 'azúl']
+console.log(miObjeto.coloresFavoritos[2]) // azúl
+
+console.log(miObjeto.cursos)
+console.log(miObjeto.cursos[1])
+console.log(miObjeto.cursos[1].nombre)
+console.log(miObjeto.cursos[1].nota)  // 13 con la notación de punto
+console.log(miObjeto.cursos[1]['nota']) // 13 con la notación de corchete
+
+console.log(miObjeto.devolverCursosAprobados)
+console.log(miObjeto.devolverCursosAprobados())
+
+// ELIMINAR PROPIEDADES DE UN OBJETO
+
+const copiaDeMiObjeto = {...miObjeto}
+
+delete copiaDeMiObjeto.colorFavorito
+delete copiaDeMiObjeto.cursos
+delete copiaDeMiObjeto['mi edad']
+
+console.log(copiaDeMiObjeto)
+console.log(miObjeto)
+
+// Otra forma de eliminar el valor de un objeto
+
+copiaDeMiObjeto.esMayorDeEdad = undefined
+
+console.log(copiaDeMiObjeto)
+
+// Insertar una nueva propiedad a un objeto
+
+miObjeto.platilloFavorito = 'Ceviche de Conchange negras'
+miObjeto['juegos$favoritos'] = ['Crash Team Racing', 'Mario', 'Minecraft']
+
+console.log(miObjeto)
+
+// Ejercicio: Manejos de las frutas
+
+const frutas = [
+  { nombre: "manzana", precio: 2, cantidad: 10 },
+  { nombre: "banana", precio: 1, cantidad: 0 },
+  { nombre: "naranja", precio: 1.5, cantidad: 5 },
+  { nombre: "kiwi", precio: 3, cantidad: 2 },
+  { nombre: "uva", precio: 2.5, cantidad: 20 }
+]
+
+// 1. includes → ¿tenemos "kiwi"?
+const nombresFrutas = frutas.map(function(fruta) {
+  return fruta.nombre
+})
+
+console.log('¿tenemos "kiwi"?', nombresFrutas.includes('kiwi'))
+
+// 2. map → obtener solo los precios
+
+// 3. filter → frutas con stock disponible
+
+// 4. reduce → calcular el valor total del inventario
+
+// 5. every → ¿todas las frutas tienen precio mayor a 0?
+
+// 6. some → ¿hay alguna fruta sin stock?
+
+
+// DESTRUCTURING DE ARREGLOS, OBJETOS
+
+// 
