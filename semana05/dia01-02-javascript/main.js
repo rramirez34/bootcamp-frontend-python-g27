@@ -803,6 +803,9 @@ const soloprecios = frutas.map(function(precios) {
   return precios.precio
 })
 
+console.log('solo precios = ', soloprecios)
+
+
 //console.log('Solo se muestran precios',)
 // 3. filter → frutas con stock disponible
 
