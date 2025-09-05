@@ -624,8 +624,16 @@ const compras = [
 
 // includes: Verifica si el cliente compró "queso".
 // console.log()
-console.log('INCLUDES', languages.includes('queso')) // true
+console.log('INCLUDES', compras.includes('queso')) // true
 // filter: Crea un nuevo arreglo que contenga solo las manzanas que se compraron.
-console.log()
+// console.log()
+const solomanzanas = compras.filter(
+  function (manzana) {
+    
+    return manzana.includes('manzana')
+  }
+)
+console.log(solomanzanas)
+
 // reduce: Cuenta cuántos productos en total compró el cliente.
 console.log()
