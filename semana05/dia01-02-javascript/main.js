@@ -571,3 +571,61 @@ let invitados = ["Ana", "Luis", "María", "Pedro", "Carla"];
 
 // MÉTODOS DE ARREGLOS (includes, map, filter, reduce, every, some, flat, flatMap, etc.)
 
+const languages = ['javascript', 'php', 'python', 'C', 'c++', 'java', 'python']
+
+// Método INCLUDES, verifica si existe cierto valor(tipo de dato) en un arreglo y devuelve un resultado booleano(true o false)
+
+console.log('INCLUDES', languages.includes('java')) // true
+console.log('INCLUDES', languages.includes('cobol')) // false
+console.log('INCLUDES', languages.includes('PYTHON')) // false
+
+// Método MAP, devuelve un arreglo y modifica cada elemento pasando una función(callback)
+// El map siempre devuelve un arreglo nuevo
+
+const nombresConAsterisco = languages.map(function(language) {
+  return language + '*'
+})
+
+console.log(languages) // Este arreglo no cambia
+
+console.log(nombresConAsterisco)
+
+// Método FILTER, nos ayuda a ubicar un elemento dentro de un arreglo usando una condición y devuelve un nuevo arreglo con los resultados
+
+const filteredLanguages = languages.filter(
+  function (language) {
+    // return false
+    // return language === 'java'
+    // return language === 'python'
+    // return language.includes('c')
+    return language.toLowerCase().includes('c')
+  }
+)
+
+console.log(filteredLanguages)
+console.log(languages)
+
+// EJERCICIO: Análisis de compras
+// Tienes un arreglo con los nombres de productos que un cliente compró en una tienda:
+
+const compras = [
+  "manzana",
+  "pan",
+  "leche",
+  "manzana",
+  "queso",
+  "huevo",
+  "pan",
+  "jugo",
+  "manzana"
+];
+
+// Resuelve lo siguiente:
+
+// includes: Verifica si el cliente compró "queso".
+// console.log()
+console.log('INCLUDES', languages.includes('queso')) // true
+// filter: Crea un nuevo arreglo que contenga solo las manzanas que se compraron.
+console.log()
+// reduce: Cuenta cuántos productos en total compró el cliente.
+console.log()
