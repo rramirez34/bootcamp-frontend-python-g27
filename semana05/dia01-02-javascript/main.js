@@ -897,4 +897,82 @@ console.log(Object.values(producto)) // Obtenemos solo las valores(values) del o
 console.log(Object.entries(producto)) // Convertimos un objeto en un arreglo y lo que devuelve es un arreglo de arreglos
 
 
-// ES6+ -> 
+// ES6+ -> ECMASCRIPT 2025 (Es el standard)
+
+// Arrow function, let, const, template strings, destructuring, clases, modulos, promesas
+
+// ARROW FUNCTION: () => {}
+
+// function nombreDelaFuncion(parametro1, parametro2) {
+//   return 'Hola a todos'
+// }
+
+// nombreDeLaFuncion()
+
+// Funciones con parámetros en un línea
+
+const imprimirSaludoArrowFn = () => console.log('Hola a todos nuevamente!')
+
+imprimirSaludoArrowFn()
+
+// Funciones con parámetros en un línea con retorno implícito
+
+const sumaArrowFn = (numero1, numero2) => numero1 + numero2
+
+console.log(sumaArrowFn(2, 5))
+
+// Funciones con parámetros y retorno explícito en múltiples líneas con retorno explícito
+
+const saludoEnMayusculasArrowFn = (nombre) => {
+  const nombreEnMayuscula = nombre.toUpperCase()
+
+  return 'Hola ' + nombreEnMayuscula + '!!'
+}
+
+console.log(saludoEnMayusculasArrowFn('victor'))
+
+// Funciones con parámetros por defecto y retorno explícito en múltiples líneas
+
+const otroSaludoEnMayusculasArrowFn = (nombre='Anónimo') => {
+  const nombreEnMayuscula = nombre.toUpperCase()
+
+  return 'Hola ' + nombreEnMayuscula + '!!'
+}
+
+console.log(otroSaludoEnMayusculasArrowFn())
+console.log(otroSaludoEnMayusculasArrowFn('victor'))
+
+// Template strings (template literals) 
+// Otra forma de crear cadenas de texto
+// backticks (`)
+
+const unNombre = 'Victor'
+const unaEdad = 39
+
+// const mensaje = 'Hola, me llamo ' + unNombre + ' y tengo ' + unaEdad + ' años.'
+const mensaje = `Hola, me llamo ${unNombre}
+y tengo ${unaEdad} años.
+Y la suma de 49 + 96 es ${49 + 96}.`
+
+console.log(mensaje)
+
+// Parámetros rest (operador rest -> ...)
+
+const listaDeNumeros = [4, 5]
+
+function miSuma(n1, n2) {
+  return n1 + n2
+}
+
+console.log(miSuma(4, 5)) // 9
+console.log(miSuma(listaDeNumeros)) // ❌ 4,5undefined
+console.log(miSuma(...listaDeNumeros)) // 9
+
+// Otro ejemplo 
+
+const listaDeNumeros2 = [25, 8, 288, 65, 76, 189, 66]
+
+console.log(Math.max(25, 8, 88, 65, 99, 828)) // 828
+console.log(Math.max(listaDeNumeros2)) // NaN
+console.log(Math.max(...listaDeNumeros2)) // 288
+
