@@ -2,31 +2,23 @@ const taskInput = document.querySelector('.task__input')
 const taskButtonClear = document.querySelector('.task__clear')
 const taskList = document.querySelector('.task__list')
 
-let tasks = JSON.parse(localStorage.getItem('tasks_ls')) ?? []
-
-console.log(tasks)
-
-// let tasks = [
-//   {
-//     id: 'tarea-1',
-//     title: 'Estudiar Javascript',
-//     completed: true
-//   },
-//   {
-//     id: 'tarea-2',
-//     title: 'Salir al receso',
-//     completed: false
-//   },
-//   {
-//     id: 'tarea-3',
-//     title: 'Resolver el reto de la semana',
-//     completed: false
-//   }
-// ]
-
-function saveTasksInLocalStorage(tasks = []) {
-  localStorage.setItem('tasks_ls', JSON.stringify(tasks))
-}
+let tasks = [
+  {
+    id: 'tarea-1',
+    title: 'Estudiar Javascript',
+    completed: true
+  },
+  {
+    id: 'tarea-2',
+    title: 'Salir al receso',
+    completed: false
+  },
+  {
+    id: 'tarea-3',
+    title: 'Resolver el reto de la semana',
+    completed: false
+  }
+]
 
 function renderTasks(tasks = []) {
   // console.log('Renderizando tasks...', tasks)
@@ -92,8 +84,6 @@ taskInput.addEventListener('keydown', (event) => {
     taskInput.value = ''
 
     console.log(tasks)
-
-    saveTasksInLocalStorage(tasks)
   }
 })
 
@@ -113,8 +103,6 @@ taskList.addEventListener('click', (event) => {
     tasks = tasks.filter(task => task.id !== id)
 
     renderTasks(tasks)
-
-    saveTasksInLocalStorage(tasks)
   }
 
   // TODO: Al presionar el check debe completarse la tarea en el arreglo de tasks
@@ -138,21 +126,12 @@ taskList.addEventListener('click', (event) => {
     renderTasks(tasks)
 
     console.log(tasks)
-
-    saveTasksInLocalStorage(tasks)
   }
 })
 
 // TODO: Al hacer click en el botón 'Limpiar tareas completadas' debemos remover todas las tareas completadas. Hay que llamar al método render también.
 
-taskButtonClear.addEventListener('click', (event) => {
-  const incompletedTasks = tasks.filter(task => !task.completed)
 
-  tasks = incompletedTasks
 
-  renderTasks(tasks)
-
-  saveTasksInLocalStorage(tasks)
-})
 
 renderTasks(tasks)
