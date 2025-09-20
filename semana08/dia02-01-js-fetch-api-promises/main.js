@@ -81,3 +81,4 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
     divApp2.innerHTML = postsList
   })
+  
