@@ -48,7 +48,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     posts.forEach(post => {
       postsList += `
         <article>
-          <h2>${post.id} - ${post.title}</h2>
+          <h3>${post.id} - ${post.title}</h3>
           <p>${post.body}</p>
         </article>
       `
@@ -59,26 +59,28 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     divApp.innerHTML = postsList
   })
 
-  // TODO: Renderizar todos los users en la página mostrando su id, name y company name
-  // https://jsonplaceholder.typicode.com/users
-  fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(users => {
-    const divApp2 = document.querySelector('#app2')
+// TODO: Renderizar todos los users en la página mostrando su id, name y company name
+// https://jsonplaceholder.typicode.com/users
 
-    let postsList = ''
+function renderUsers(users) {
+  const divUsers = document.querySelector('#users')
 
-    users.forEach(post => {
-      postsList += `
-        <article>
-          <h2>${post.id} - ${post.name}</h2>
-          <p>${post.company.name}</p>
-        </article>
-      `
-    });
+  let usersList = ''
 
-    console.log(postsList)
-
-    divApp2.innerHTML = postsList
+  users.forEach(user => {
+    usersList += `
+      <article>
+        <h3>${user.id} - ${user.name}</h3>
+        <p>${user.company.name}</p>
+      </article>
+    `
   })
   
+  divUsers.innerHTML = usersList
+}
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(users => {
+    renderUsers(users)
+  })
