@@ -32,18 +32,17 @@ fetch(url)
   
 // TODO: Renderizar los nombres de los planetas de la siguiente ruta (API) y mostrar su nombre, descripción y su imagen
 
-const url2 = 'https://dragonball-api.com/api/planets'
-
-const renderPlanetas = (plane) => {
+const renderPlanetas = (planetas) => {
   const planetasDiv = document.querySelector('#planetas')
 
   let html = ''
 
-  plane.forEach(planet => {
+  planetas.forEach(character => {
     html += `
       <article>
-        <h2>${planet.name} - ${planet.description}</h2>
-        <img src="${planet.image}" height="200" />
+        <h2>${character.id} - ${character.name}</h2>
+        <p>${character.description}</p>
+        <img src="${character.image}" height="200" />
       </article>
     `
   });
@@ -51,10 +50,10 @@ const renderPlanetas = (plane) => {
   planetasDiv.innerHTML = html
 }
 
-fetch(url2)
-  .then(response2 => response2.json())
-  .then(data2 => {
+fetch('https://dragonball-api.com/api/planets')
+  .then(response => response.json())
+  .then(data => {
     // console.log(data)
-    
-    renderPlanetas(data2.items)
+
+    renderPlanetas(data.items)
   })
