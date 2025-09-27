@@ -22,4 +22,5 @@ export const createMovie = async (form) => {
 
 export const deleteMovie = async () => {
   // Aquí va la lógica para eliminar una película
+  DELETE url/deleteMovie
 }
