@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import './App.css'
+
 function App() {
   const DEFAULT_TODOS = [
     {
@@ -20,6 +22,7 @@ function App() {
   ] 
 
   const [todos, setTodos] = useState(DEFAULT_TODOS)
+  const [input, setInput] = useState('')
 
   const handleRemove = (id) => {
     console.log('Click', id)
@@ -32,7 +35,34 @@ function App() {
     event.preventDefault();
     
     // TODO: 01 - Crear un nuevo todo en el estado todos
-    console.log('Creando tarea...')
+    console.log('Creando tarea...', input)
+
+    const newTodo = {
+      id: crypto.randomUUID(),
+      title: input,
+      completed: false
+    }
+
+    setTodos([...todos, newTodo])
+
+    setInput('')
+  }
+
+  const handleCompleted = (id) => {
+    console.log('Completando tarea...')
+
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      }
+
+      return todo
+    })
+
+    setTodos(updatedTodos)
   }
 
   return (
@@ -44,14 +74,35 @@ function App() {
           type='text'
           placeholder='¿Qué deseas hacer hoy?'
           required
+          onChange={(event) => setInput(event.target.value)}
+          value={input}
         />
         <input type='submit' value='Save' />
       </form>
 
+      {/* {input} */}
+
+      {/* TODO: Llenar los datos de las estadisticas y limpiar las tareas completadas con el botón */}
+      <section>
+        <span>2 de 3 completadas</span>
+
+        <button>
+          Limpiar completadas
+        </button>
+      </section>
+
       <ul>
         {todos.map((todo, index) => {
           return <li key={todo.id}>
-            {todo.title}
+            <input
+              type='checkbox'
+              checked={todo.completed}
+              onChange={() => handleCompleted(todo.id)}
+            />
+
+            <span className={`${todo.completed ? 'completed' : ''}`}>
+              {todo.title}
+            </span>
 
             <button onClick={() => handleRemove(todo.id)}>❌</button>
           </li>
