@@ -1,34 +1,51 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const DEFAULT_TODOS = [
+    {
+      id: '1',
+      title: 'Aprender Javascript 123',
+      completed: true
+    },
+    {
+      id: '2',
+      title: 'Aprender CSS',
+      completed: false
+    },
+    {
+      id: '3',
+      title: 'Aprender React.js + Tailwind CSS',
+      completed: true
+    }
+  ]
+
+  const [todos, setTodos] = useState(DEFAULT_TODOS)
+
+  const handleRemove = (id) => {
+    console.log('Click', id)
+    const updatedTodos = todos.filter(todo => todo.id !== id)
+
+    setTodos(updatedTodos) // Remplazamos el estado todos con los todos actulizados
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <h1>Todo App + React + Tailwind</h1>
+
+      <ul>
+        {todos.map((todo, index) => {
+          return <li key={todo.id}>
+            {todo.title}
+
+            <button onClick={() => handleRemove(todo.id)}>❌</button>
+          </li>
+        })}
+      </ul>
+
+      <pre>{JSON.stringify(todos, null, 2)}</pre>
+
+      {/* <h1 className='logo' style={{ color: 'red', backgroundColor: '#ade' }}>Hola React.js!</h1> */}
+    </main>
   )
 }
 
