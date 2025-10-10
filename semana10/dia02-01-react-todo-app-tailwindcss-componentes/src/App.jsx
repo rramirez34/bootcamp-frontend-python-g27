@@ -2,6 +2,10 @@ import { useState } from 'react'
 
 import './App.css'
 
+import TodoHeader from './components/TodoHeader'
+import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
+
 function App() {
   const DEFAULT_TODOS = [
     {
@@ -22,30 +26,12 @@ function App() {
   ] 
 
   const [todos, setTodos] = useState(DEFAULT_TODOS)
-  const [input, setInput] = useState('')
 
   const handleRemove = (id) => {
     console.log('Click', id)
     const updatedTodos = todos.filter(todo => todo.id !== id)
 
     setTodos(updatedTodos) // Remplazamos el estado todos con los todos actulizados
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    // TODO: 01 - Crear un nuevo todo en el estado todos
-    console.log('Creando tarea...', input)
-
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title: input,
-      completed: false
-    }
-
-    setTodos([...todos, newTodo])
-
-    setInput('')
   }
 
   const handleCompleted = (id) => {
@@ -73,20 +59,15 @@ function App() {
     setTodos(incompletedTodos)
   }
 
+  const handleSave = (newTodo) => {
+    setTodos([...todos, newTodo])
+  }
+
   return (
     <main>
-      <h1>Todo App + React + Tailwind</h1>
+      <TodoHeader title='Todo App + React + Tailwind + props' />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='¿Qué deseas hacer hoy?'
-          required
-          onChange={(event) => setInput(event.target.value)}
-          value={input}
-        />
-        <input type='submit' value='Save' />
-      </form>
+      <TodoForm onSubmit={handleSave} />
 
       {/* {input} */}
 
@@ -103,23 +84,7 @@ function App() {
         </button>
       </section>
 
-      <ul>
-        {todos.map((todo, index) => {
-          return <li key={todo.id}>
-            <input
-              type='checkbox'
-              checked={todo.completed}
-              onChange={() => handleCompleted(todo.id)}
-            />
-
-            <span className={`${todo.completed ? 'completed' : ''}`}>
-              {todo.title}
-            </span>
-
-            <button onClick={() => handleRemove(todo.id)}>❌</button>
-          </li>
-        })}
-      </ul>
+      <TodoList todos={todos} onCompleted={handleCompleted} />
 
       <pre>{JSON.stringify(todos, null, 2)}</pre>
 
